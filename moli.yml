@@ -1,0 +1,19 @@
+- name: app_1
+  lang: rust
+  spec:
+    - name: src
+      file:
+        - name: main
+      tree:
+        - name: domain
+          tree:
+            - name: model
+              file:
+                - name: user
+
+- name: app_2
+  lang: rust
+  spec:
+    - name: src
+      file:
+        - name: lib

@@ -76,9 +76,9 @@ impl ConfigValidator {
             });
         }
 
-        // Validate modules (spec)
-        for (i, module) in project.spec().iter().enumerate() {
-            if let Err(module_errors) = Self::validate_module(module, &format!("{}.spec[{}]", path, i)) {
+        // Validate modules (tree)
+        for (i, module) in project.tree().iter().enumerate() {
+            if let Err(module_errors) = Self::validate_module(module, &format!("{}.tree[{}]", path, i)) {
                 errors.extend(module_errors);
             }
         }
@@ -180,7 +180,7 @@ mod tests {
                 name: "app".to_string(),
                 root: true,
                 lang: "rust".to_string(),
-                spec: vec![],
+                tree: vec![],
                 file: vec![],
             }],
         };
@@ -196,14 +196,14 @@ mod tests {
                     name: "backend".to_string(),
                     root: false,
                     lang: "rust".to_string(),
-                    spec: vec![],
+                    tree: vec![],
                     file: vec![],
                 },
                 Project {
                     name: "frontend".to_string(),
                     root: false,
                     lang: "javascript".to_string(),
-                    spec: vec![],
+                    tree: vec![],
                     file: vec![],
                 },
             ],
@@ -220,14 +220,14 @@ mod tests {
                     name: "app1".to_string(),
                     root: true,
                     lang: "rust".to_string(),
-                    spec: vec![],
+                    tree: vec![],
                     file: vec![],
                 },
                 Project {
                     name: "app2".to_string(),
                     root: true,
                     lang: "go".to_string(),
-                    spec: vec![],
+                    tree: vec![],
                     file: vec![],
                 },
             ],
@@ -244,14 +244,14 @@ mod tests {
                     name: "app".to_string(),
                     root: false,
                     lang: "rust".to_string(),
-                    spec: vec![],
+                    tree: vec![],
                     file: vec![],
                 },
                 Project {
                     name: "app".to_string(),
                     root: false,
                     lang: "go".to_string(),
-                    spec: vec![],
+                    tree: vec![],
                     file: vec![],
                 },
             ],
@@ -267,7 +267,7 @@ mod tests {
                 name: "app".to_string(),
                 root: true,
                 lang: "cobol".to_string(),
-                spec: vec![],
+                tree: vec![],
                 file: vec![],
             }],
         };

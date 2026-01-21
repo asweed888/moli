@@ -61,7 +61,7 @@ impl GoModuleHandler {
         }
         
         // Generate module structure
-        for module in project.spec() {
+        for module in project.tree() {
             GoPackageGenerator::generate_module(project_path, module, &[])?;
         }
 

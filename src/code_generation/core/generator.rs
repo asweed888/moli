@@ -130,12 +130,12 @@ impl CodeGenerator {
         }
 
         // Generate module structure
-        for module in project.spec() {
+        for module in project.tree() {
             RustModuleGenerator::generate_module(project_path, module, &[])?;
         }
 
         // Generate main.rs or lib.rs
-        let src_modules: Vec<_> = project.spec().iter()
+        let src_modules: Vec<_> = project.tree().iter()
             .filter(|m| m.name() == "src")
             .cloned()
             .collect();
@@ -174,7 +174,7 @@ impl CodeGenerator {
         }
 
         // Generate module structure
-        for module in project.spec() {
+        for module in project.tree() {
             TypeScriptModuleGenerator::generate_module(project_path, module, &[])?;
         }
 

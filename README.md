@@ -57,7 +57,7 @@ moli_install
 - name: my-app
   root: true
   lang: typescript
-  spec:
+  tree:
     - name: src
       tree:
         - name: components
@@ -74,8 +74,7 @@ moli_install
 - **`name`**: プロジェクト名
 - **`root`**: ルートプロジェクトかどうか（`true`の場合、現在のディレクトリに直接生成）
 - **`lang`**: 対象プログラミング言語 (`rust`, `go`, `python`, `typescript`, `javascript`)
-- **`spec`**: プロジェクトのトップレベル構造
-- **`tree`**: サブモジュールやネストした構造（再帰的に使用）
+- **`tree`**: ディレクトリ構造を定義（再帰的に使用可能）
 - **`file`**: 生成する個別ファイル（拡張子があれば保持、なければ言語に応じて付与）
 
 ### マルチプロジェクト構成
@@ -85,7 +84,7 @@ moli_install
 ```yaml
 - name: frontend
   lang: typescript
-  spec:
+  tree:
     - name: src
       tree:
         - name: components
@@ -94,7 +93,7 @@ moli_install
 
 - name: backend  
   lang: rust
-  spec:
+  tree:
     - name: src
       file:
         - name: main
@@ -124,7 +123,7 @@ moli_install
 - name: my-rust-app
   root: true
   lang: rust
-  spec:
+  tree:
     - name: src
       file:
         - name: main
@@ -144,7 +143,7 @@ moli_install
 - name: my-web-app
   root: true
   lang: typescript
-  spec:
+  tree:
     - name: src
       tree:
         - name: components
@@ -161,7 +160,7 @@ moli_install
 - name: my-go-app
   root: true
   lang: go
-  spec:
+  tree:
     - name: pkg
       tree:
         - name: models
@@ -209,7 +208,7 @@ moliは3層のファイル保護システムを実装しています:
 現在のバージョン: **v1.0.0**
 
 v1.0では以下の特徴があります:
-- シンプルで直感的なYAML構造（`spec`, `tree`, `file`）
+- シンプルで直感的なYAML構造（`tree`, `file`）
 - マルチプロジェクト対応
 - ファイル保護システムの実装
 - AI向け自動化機能の追加

@@ -40,7 +40,7 @@ impl JavaScriptPackageHandler {
         }
         
         // Generate module structure
-        for module in project.spec() {
+        for module in project.tree() {
             JavaScriptModuleGenerator::generate_module(project_path, module, &[])?;
         }
 

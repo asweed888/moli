@@ -43,7 +43,7 @@ impl PythonInitHandler {
         }
         
         // Generate module structure
-        for module in project.spec() {
+        for module in project.tree() {
             PythonPackageGenerator::generate_module(project_path, module, &[])?;
         }
 

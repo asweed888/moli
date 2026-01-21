@@ -92,7 +92,7 @@ fn generate_new_moli_yml(project_name: &str, language: &str) -> Result<String> {
                 r#"- name: {}
   root: true
   lang: {}
-  spec:
+  tree:
     - name: src
       file:
         - name: {}
@@ -118,7 +118,7 @@ fn generate_new_moli_yml(project_name: &str, language: &str) -> Result<String> {
                 r#"- name: {}
   root: true
   lang: {}
-  spec:
+  tree:
     - name: src
       file:
         - name: {}
@@ -144,7 +144,7 @@ fn generate_new_moli_yml(project_name: &str, language: &str) -> Result<String> {
                 r#"- name: {}
   root: true
   lang: {}
-  spec:
+  tree:
     - name: src
       file:
         - name: {}
@@ -173,7 +173,7 @@ fn append_to_existing_moli_yml(project_name: &str, language: &str) -> Result<()>
 
 - name: {}
   lang: {}
-  spec:
+  tree:
     - name: src
       file:
         - name: {}
@@ -201,7 +201,7 @@ fn append_to_existing_moli_yml(project_name: &str, language: &str) -> Result<()>
 
 - name: {}
   lang: {}
-  spec:
+  tree:
     - name: src
       file:
         - name: {}
@@ -229,7 +229,7 @@ fn append_to_existing_moli_yml(project_name: &str, language: &str) -> Result<()>
 
 - name: {}
   lang: {}
-  spec:
+  tree:
     - name: src
       file:
         - name: {}

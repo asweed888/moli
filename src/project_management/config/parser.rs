@@ -50,7 +50,7 @@ mod tests {
 - name: app
   root: true
   lang: rust
-  spec:
+  tree:
     - name: src
       tree:
         - name: domain
@@ -68,7 +68,7 @@ mod tests {
         assert_eq!(project.name(), "app");
         assert!(project.is_root());
         assert_eq!(project.language(), "rust");
-        assert_eq!(project.spec().len(), 1);
+        assert_eq!(project.tree().len(), 1);
     }
 
     #[test]
@@ -76,14 +76,14 @@ mod tests {
         let yaml_content = r#"
 - name: backend
   lang: rust
-  spec:
+  tree:
     - name: src
       file:
         - name: main
 
 - name: frontend
   lang: javascript
-  spec:
+  tree:
     - name: src
       file:
         - name: index.js
@@ -110,7 +110,7 @@ mod tests {
         let yaml_content = r#"
 - name: app
   lang: rust
-  spec:
+  tree:
     - name: src
       file:
         - name: model
@@ -119,7 +119,7 @@ mod tests {
 
         let config = ConfigParser::parse_string(yaml_content).unwrap();
         let project = &config.projects()[0];
-        let files = &project.spec()[0].files();
+        let files = &project.tree()[0].files();
 
         // Test auto extension
         assert_eq!(files[0].filename_with_extension("rust"), "model.rs");

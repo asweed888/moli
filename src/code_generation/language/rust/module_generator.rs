@@ -201,7 +201,7 @@ impl RustModuleGenerator {
         let has_main_in_project = project.files().iter()
             .any(|f| f.name() == "main" || f.filename_with_extension("rust") == "main.rs");
 
-        let has_main_in_src = project.spec().iter()
+        let has_main_in_src = project.tree().iter()
             .filter(|m| m.name() == "src")
             .flat_map(|m| m.files())
             .any(|f| f.name() == "main" || f.filename_with_extension("rust") == "main.rs");
@@ -214,7 +214,7 @@ impl RustModuleGenerator {
         let has_lib_in_project = project.files().iter()
             .any(|f| f.name() == "lib" || f.filename_with_extension("rust") == "lib.rs");
 
-        let has_lib_in_src = project.spec().iter()
+        let has_lib_in_src = project.tree().iter()
             .filter(|m| m.name() == "src")
             .flat_map(|m| m.files())
             .any(|f| f.name() == "lib" || f.filename_with_extension("rust") == "lib.rs");

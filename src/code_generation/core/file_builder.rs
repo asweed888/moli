@@ -33,12 +33,12 @@ impl FileBuilder {
         project: &Project,
     ) -> Result<()> {
         // Generate files in all modules
-        for module in project.spec() {
+        for module in project.tree() {
             Self::build_rust_module_files(&project_path, module, &[])?;
         }
 
         // Generate main.rs or lib.rs for src modules (only if explicitly specified)
-        if let Some(src_module) = project.spec().iter().find(|m| m.name() == "src") {
+        if let Some(src_module) = project.tree().iter().find(|m| m.name() == "src") {
             if RustModuleGenerator::should_generate_main_rs(project) {
                 RustModuleGenerator::generate_main_rs(&project_path, &[src_module.clone()])?;
             } else if RustModuleGenerator::should_generate_lib_rs(project) {
@@ -60,7 +60,7 @@ impl FileBuilder {
         TypeScriptModuleGenerator::generate_tsconfig_json(&project_path)?;
 
         // Generate files in all modules
-        for module in project.spec() {
+        for module in project.tree() {
             Self::build_typescript_module_files(&project_path, module, &[])?;
         }
 
@@ -90,7 +90,7 @@ impl FileBuilder {
         project_path: P,
         project: &Project,
     ) -> Result<()> {
-        for module in project.spec() {
+        for module in project.tree() {
             Self::build_generic_module_files(&project_path, module, project.language())?;
         }
         Ok(())
@@ -171,14 +171,14 @@ impl FileBuilder {
             PathBuf::from(project.name())
         };
 
-        for module in project.spec() {
+        for module in project.tree() {
             Self::collect_module_files(&base_path, module, project.language(), &mut files);
         }
 
         // Add language-specific files
         match project.language() {
             "rust" => {
-                if let Some(_) = project.spec().iter().find(|m| m.name() == "src") {
+                if let Some(_) = project.tree().iter().find(|m| m.name() == "src") {
                     files.push(base_path.join("src/main.rs"));
                 }
             }

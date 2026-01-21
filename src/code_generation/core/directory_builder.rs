@@ -24,7 +24,7 @@ impl DirectoryBuilder {
         };
 
         // Build module structure recursively
-        for module in project.spec() {
+        for module in project.tree() {
             Self::build_module_structure(&project_path, module)?;
         }
 
@@ -60,7 +60,7 @@ impl DirectoryBuilder {
             PathBuf::from(project.name())
         };
 
-        for module in project.spec() {
+        for module in project.tree() {
             Self::collect_module_directories(&base_path, module, &mut directories);
         }
 
@@ -101,7 +101,7 @@ impl DirectoryBuilder {
     ) -> Result<()> {
         if project.is_root() {
             // For root projects, only clean specific module directories
-            for module in project.spec() {
+            for module in project.tree() {
                 let module_path = base_path.as_ref().join(module.name());
                 if module_path.exists() {
                     fs::remove_dir_all(&module_path)

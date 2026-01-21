@@ -173,7 +173,7 @@ impl JavaScriptModuleGenerator {
         let has_index_in_project = project.files().iter()
             .any(|f| f.name() == "index" || f.filename_with_extension("javascript") == "index.js");
         
-        let has_index_in_modules = project.spec().iter()
+        let has_index_in_modules = project.tree().iter()
             .flat_map(|m| Self::find_index_in_module(m))
             .any(|has_index| has_index);
         

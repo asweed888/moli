@@ -145,7 +145,7 @@ func main() {
         let has_main_in_project = project.files().iter()
             .any(|f| f.name() == "main" || f.filename_with_extension("go") == "main.go");
         
-        let has_main_in_modules = project.spec().iter()
+        let has_main_in_modules = project.tree().iter()
             .flat_map(|m| Self::find_main_in_module(m))
             .any(|has_main| has_main);
         

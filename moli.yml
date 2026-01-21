@@ -1,6 +1,6 @@
 - name: app_1
   lang: rust
-  spec:
+  tree:
     - name: src
       file:
         - name: main
@@ -13,7 +13,7 @@
 
 - name: app_2
   lang: rust
-  spec:
+  tree:
     - name: src
       file:
         - name: lib

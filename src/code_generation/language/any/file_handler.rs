@@ -38,7 +38,7 @@ impl AnyFileHandler {
         }
 
         // Generate module structure (directories and files)
-        for module in project.spec() {
+        for module in project.tree() {
             Self::generate_module(project_path, module)?;
         }
 

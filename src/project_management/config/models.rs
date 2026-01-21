@@ -17,7 +17,7 @@ pub struct Project {
     #[serde(default)]
     pub file: Vec<CodeFile>,
     #[serde(default)]
-    pub spec: Vec<Module>,
+    pub tree: Vec<Module>,
 }
 
 /// Module or directory structure
@@ -78,9 +78,9 @@ impl Project {
         &self.lang
     }
 
-    /// Get top-level modules (spec)
-    pub fn spec(&self) -> &[Module] {
-        &self.spec
+    /// Get top-level modules (tree)
+    pub fn tree(&self) -> &[Module] {
+        &self.tree
     }
 
     /// Get all code files at project level

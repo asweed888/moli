@@ -32,10 +32,7 @@ fn main() -> anyhow::Result<()> {
             command::rm::spec()
         )
         .subcommand(
-            command::load::spec()
-        )
-        .subcommand(
-            command::claude_skill::spec()
+            command::scan::spec()
         )
         .subcommand(
             command::completion::spec()
@@ -44,8 +41,8 @@ fn main() -> anyhow::Result<()> {
         .get_matches();
 
     match matches.subcommand() {
-        Some(("up", _)) => {
-            command::up::action()
+        Some(("up", sub_matches)) => {
+            command::up::action(sub_matches)
         }
         Some(("new", sub_matches)) => {
             command::new::action(sub_matches)
@@ -53,11 +50,8 @@ fn main() -> anyhow::Result<()> {
         Some(("rm", _)) => {
             command::rm::action()
         }
-        Some(("load", _)) => {
-            command::load::action()
-        }
-        Some(("claude-skill", _)) => {
-            command::claude_skill::action()
+        Some(("scan", _)) => {
+            command::scan::action()
         }
         Some(("completion", sub_matches)) => {
             command::completion::action(sub_matches)

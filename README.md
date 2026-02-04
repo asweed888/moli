@@ -112,7 +112,9 @@ moli_install
 - `moli new`: 対話的プロンプトで新しいプロジェクトを初期化
 - `moli new --lang <言語>`: 指定言語で新しいプロジェクトを初期化（AI向け）
 - `moli up`: 現在の`moli.yml`仕様に基づいてコードを生成
-- `moli claude-skill`: Claude Code向けのmoli開発スキルを生成
+- `moli up claude-skill`: Claude Code向けのmoli開発スキルを生成
+- `moli scan`: 既存プロジェクト構造をスキャンしてmoli.ymlに取り込み
+- `moli rm`: moli.ymlから削除されたモジュールを削除
 - `moli --help`: ヘルプ情報を表示
 - `moli --version`: バージョン情報を表示
 
@@ -205,14 +207,14 @@ moliは3層のファイル保護システムを実装しています:
 
 ## バージョン
 
-現在のバージョン: **v1.0.0**
+現在のバージョン: **v2.0.0**
 
-v1.0では以下の特徴があります:
+### v2.0の変更点
+- サブコマンド名の改名（`load` → `scan`、`claude-skill` → `up claude-skill`）
+- `up`コマンドのネストサブコマンド対応
+
+### v1.0の特徴
 - シンプルで直感的なYAML構造（`tree`, `file`）
 - マルチプロジェクト対応
 - ファイル保護システムの実装
 - AI向け自動化機能の追加
-
-## ライセンス
-
-このプロジェクトはv1.0に達し、安定したAPIを提供しています。

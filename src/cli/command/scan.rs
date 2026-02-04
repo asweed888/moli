@@ -10,8 +10,8 @@ use crate::project_management::config::yaml_modifier::{YamlModifier, AddChild};
 use crate::shared::utils::diff::show_diff;
 
 pub fn spec() -> Command {
-    Command::new("load")
-        .about("Load unmanaged files or directories into moli.yml")
+    Command::new("scan")
+        .about("Scan and import unmanaged files or directories into moli.yml")
         .long_about(
             "Interactively select and add a file or directory to moli.yml.\n\
             \n\

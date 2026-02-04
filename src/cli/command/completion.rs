@@ -77,6 +77,10 @@ fn build_cli() -> Command {
         .subcommand(
             Command::new("up")
                 .about("Generate project structure from moli.yml configuration")
+                .subcommand(
+                    Command::new("claude-skill")
+                        .about("Generate Claude Code skill for moli-based system development")
+                )
         )
         .subcommand(
             Command::new("new")
@@ -89,8 +93,12 @@ fn build_cli() -> Command {
                 )
         )
         .subcommand(
-            Command::new("claude-skill")
-                .about("Generate Claude Code skill for moli-based system development")
+            Command::new("scan")
+                .about("Scan and import unmanaged files or directories into moli.yml")
+        )
+        .subcommand(
+            Command::new("rm")
+                .about("Remove files and directories deleted from moli.yml")
         )
         .subcommand(spec())
         .version(version)

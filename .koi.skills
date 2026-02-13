@@ -1,0 +1,5 @@
+[skills]
+git-commit = "claude-engineering-skills/git-commit"
+koi = "claude-engineering-skills/koi"
+skill-edit = "claude-basic-skills/skill-edit"
+skill-make = "claude-basic-skills/skill-make"

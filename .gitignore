@@ -5,3 +5,4 @@ _test*
 # Added by cargo
 
 target
+.claude/skills
